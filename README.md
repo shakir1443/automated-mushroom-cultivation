@@ -19,7 +19,17 @@ The project includes three-way control system :
 11. Solenoid valve
 12. Exhasut fan
 13. Pipe and nozzles
-
+## Technology
+1. NodeJs
+2. ReSTful API
+3. Php
+4. MySQL
+5. Embedded C
+6. JSON
+7. Linux/Windows Server
+8. MQTT
+9. Socket
+10. Javascript 
 ## Benefits
 1. Real time information from multiple locations.
 2. Automated System.	
