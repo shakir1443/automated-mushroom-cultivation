@@ -21,7 +21,7 @@ The project includes three-way control system :
 13. Pipe and nozzles
 ## Technology
 1. NodeJs
-2. ReSTful API
+2. RESTful API
 3. Php
 4. MySQL
 5. Embedded C
