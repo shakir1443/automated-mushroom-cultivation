@@ -1,6 +1,6 @@
 # IoT based Automated Mushroom Cultivation System
 ## Introduction
-Different mushroom needs different types of environments. Now you can create the environment as the mushroom needs. The system is so intelligent that it will automatically realize how to take care of mushrooms. When it is time to spray water or when it is time to provide fresh air nad remove carbon-di-oxide. The system will notify after taking each action. You don’t need to put your hand on it. The system can maintain proper balance of humidity, temperature, light, carbon-di-oxide, oxygen and compost moisture. You can monitor the cultivation process remotely.
+Different mushroom needs different types of environments. Now you can create the environment as the mushroom needs. The system is so intelligent that it will automatically realize how to take care of mushrooms. When it is time to spray water or when it is time to provide fresh air and remove carbon-di-oxide. The system will notify after taking each action. A farmer doesn’t need to put hand on it. The system can maintain proper balance of humidity, temperature, light, carbon-di-oxide, oxygen and compost moisture for different mushrooms. Farmers can monitor the cultivation process remotely.
 The project includes three-way control system :
 1. Remote manual control.
 2. Time based control.
