@@ -117,6 +117,9 @@ include("session.php");
 							<li class="has_sub">
 								<a  href="dashboard_3.php" class="waves-effect"><i class="ti-bar-chart"></i><span>Analytics</span></a>
                             </li>
+                            <li class="has_sub">
+								<a  href="settings.php" class="waves-effect"><i class="ti-menu-alt"></i><span>Settings</span></a>
+                            </li>
                             
                         </ul>
                         <div class="clearfix"></div>
@@ -194,7 +197,7 @@ include("session.php");
                             <div id="light" class="col-md-6 col-lg-6 col-xl-4">
                                 <div class="widget-bg-color-icon card-box fadeInDown animated">
                                     <div class="bg-icon pull-left">
-                                        <input class="knob" data-width="80" data-height="150" data-linecap=round data-fgColor="#02edd1" value="<?php echo $row["light"]; ?>" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".20"/>
+                                        <input class="knob" data-width="80" data-height="150" data-linecap=round data-fgColor="#02edd1" value="<?php echo $row["light"]/10; ?>" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".20"/>
                                     </div>
                                     <div class="text-right">
 									<script>  var a =10;</script>
@@ -218,23 +221,11 @@ include("session.php");
                                 </div>
                             </div>
 
-                           <div id="soil" class="col-md-6 col-lg-6 col-xl-4">
-                                <div class="widget-bg-color-icon card-box fadeInDown animated">
-                                    <div class="bg-icon pull-left">
-                                        <input class="knob" data-width="80" data-height="150" data-linecap=round data-fgColor="#5fe28d" value="<?php echo $row["soil"]; ?>" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".20"/>
-                                    </div>
-                                    <div class="text-right">
-                                        <h3 class="text-dark"><b class="counter"><?php echo $row["soil"]; ?></b>%</h3>
-                                        <p class="text-muted mb-0">SOIL MOISTURE</p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
 							
 							<div id="co2" class="col-md-6 col-lg-6 col-xl-4">
                                 <div class="widget-bg-color-icon card-box fadeInDown animated">
                                     <div class="bg-icon pull-left">
-                                        <input class="knob" data-width="80" data-height="150" data-linecap=round data-fgColor="#69777a" value="<?php echo $row["co2"]/10; ?>" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".20"/>
+                                        <input class="knob" data-width="80" data-height="150" data-linecap=round data-fgColor="#69777a" value="<?php echo $row["co2"]/100; ?>" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".20"/>
                                     </div>
                                     <div class="text-right">
                                         <h3 class="text-dark"><b class="counter"><?php echo $row["co2"]; ?></b></h3>
@@ -258,7 +249,7 @@ include("session.php");
                                     </div>
                                     <div class="text-right">
                                         <label class="switch">
-										  <input type="checkbox" id="fan-slider" onclick="fanOn()">
+										 <input type="checkbox" id="fan-slider" onclick="fan()">
 										  <span class="slider"></span>
 										</label>
                                         <h2 class="text-muted mb-0">FAN</h2>

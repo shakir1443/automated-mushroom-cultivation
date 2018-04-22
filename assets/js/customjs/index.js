@@ -1,7 +1,7 @@
-var socket = io.connect('http://192.168.2.91:5000');
+var socket = io.connect('http://182.163.112.207:4000');
+
 
             jQuery(document).ready(function($) {
-
 
 
 			//donut chart
@@ -13,7 +13,7 @@ var socket = io.connect('http://192.168.2.91:5000');
             // donut chart end
 
 			//status check
-			socket.emit('publish', {topic:"chk",payload:"chk_status"});
+			socket.emit('publish', {topic:"mushroom/chk-status",payload:"1"});
 			// end status check
 
 			//notification
@@ -52,31 +52,83 @@ var socket = io.connect('http://192.168.2.91:5000');
 			 //notification
             });
 
+            function temp(){
+               var t = document.getElementById('temp').value;
+               socket.emit('publish',{topic:"mushroom/temp",payload:t});
+}
 
-			// fan
-			function fanOn(){
-								if (document.getElementById('fan-slider').checked)
-									{
-										document.getElementById("fan-img").src = "image/fan.gif";
-										socket.emit('publish', {topic:"smcms",payload:"on"});
-										} else {
-										        document.getElementById("fan-img").src = "image/fanstop.png";
-												socket.emit('publish', {topic:"smcms",payload:"off"});
-												}
-							}
-			// fan end
+           function get_time(){
+               var timehold = new Array(8);
+               var t1 = document.getElementById('time1').value;
+               var t2 = document.getElementById('time2').value;
+               var t3 = document.getElementById('time3').value;
+               var t4 = document.getElementById('time4').value;
+               var t5 = document.getElementById('time5').value;
+               var comma = ",";
+               var zero = "0";
+               timehold[0] = t1.concat(comma);
+               if(t2){
+               timehold[1] = timehold[0].concat(t2);
+               timehold[2] = timehold[1].concat(comma);                
+}              else{
+               timehold[1] = timehold[0].concat(zero);
+               timehold[2] = timehold[1].concat(comma);   
+}               
 
-			// water
-			function waterOn() {
-								if (document.getElementById('water-slider').checked)
-									{
-										document.getElementById("water-img").src = "image/water.gif";
-										socket.emit('publish', {topic:"smcms1",payload:"on"});
-									} else {
-											document.getElementById("water-img").src = "image/waterstop.png";
-											socket.emit('publish', {topic:"smcms1",payload:"off"});
-										}
-								}
+               if(t3){
+               timehold[3] = timehold[2].concat(t3);
+               timehold[4] = timehold[3].concat(comma);  
+}             
+              else{
+               timehold[3] = timehold[2].concat(zero);
+               timehold[4] = timehold[3].concat(comma);
+}             
+               if(t4){
+               timehold[5] = timehold[4].concat(t4);
+               timehold[6] = timehold[5].concat(comma);  
+}             
+               else{
+               timehold[5] = timehold[4].concat(zero);
+               timehold[6] = timehold[5].concat(comma);
+}
+               if(t5){
+               timehold[7] = timehold[6].concat(t5); 
+}              else{
+               timehold[7] = timehold[6].concat(zero);
+}
+               socket.emit('publish',{topic:"mushroom/time",payload:timehold[7]});
+               alert("Time Set Successfully");
+}
+
+// fan
+function fan(){
+if (document.getElementById('fan-slider').checked)
+{
+	document.getElementById("fan-img").src = "image/fan.gif";
+	socket.emit('publish', {topic:"mushroom/user_input", payload:"5"});   
+
+} 
+else 
+{
+    document.getElementById("fan-img").src = "image/fanstop.png";
+	socket.emit('publish', {topic:"mushroom/user_input",payload:"4"});
+}
+}
+// fan end
+
+// water
+function waterOn() {
+if (document.getElementById('water-slider').checked)
+{
+	document.getElementById("water-img").src = "image/water.gif";
+	socket.emit('publish', {topic:"mushroom/user_input",payload:"2"});
+} 
+else
+{
+	document.getElementById("water-img").src = "image/waterstop.png";
+	socket.emit('publish', {topic:"mushroom/user_input",payload:"3"});
+}
+}
 
 			//water end
 
@@ -85,7 +137,7 @@ var socket = io.connect('http://192.168.2.91:5000');
 			socket.on('connect', function () {
 				socket.on('mqtt', function (msg) {
 					console.log(msg.topic+' '+msg.payload);
-					if(msg.topic=="fan_status"){
+					if(msg.topic=="mushroom/fan-status"){
 						if(msg.payload=="on"){
 						    $('#fan-slider').prop('checked', true);
 							$('#fan-img').attr('src','image/fan.gif');
@@ -97,7 +149,7 @@ var socket = io.connect('http://192.168.2.91:5000');
 						 }
 					}
 
-					if(msg.topic=="water_status"){
+					if(msg.topic=="mushroom/pump-status"){
 						if(msg.payload=="on"){
 							  document.getElementById("water-img").src = "image/water.gif";
 						      $('#water-slider').prop('checked', true);
@@ -116,8 +168,8 @@ var socket = io.connect('http://192.168.2.91:5000');
 					}
 
 				});
-					socket.emit('subscribe',{topic:'fan_status'});
-					socket.emit('subscribe',{topic:'water_status'});
+					socket.emit('subscribe',{topic:'fan-status'});
+					socket.emit('subscribe',{topic:'pump-status'});
 					socket.emit('subscribe',{topic:'reload'});
 			});
 

@@ -123,6 +123,9 @@ include("session.php");
 							<li class="has_sub">
 								<a  href="dashboard_3.php" class="waves-effect"><i class="ti-bar-chart"></i><span>Analytics</span></a>
                             </li>
+                            <li class="has_sub">
+								<a  href="settings.php" class="waves-effect"><i class="ti-menu-alt"></i><span>Settings</span></a>
+                            </li>
                             
 
                         </ul>

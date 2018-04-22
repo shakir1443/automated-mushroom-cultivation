@@ -10,7 +10,7 @@
 	  $salt = "faka&kapa#xyz";
 	 $pass = crypt($mypassword,$salt);
       
-      $sql = "SELECT id FROM login WHERE username = '$myusername' and password = '$pass'";
+      $sql = "SELECT id FROM login WHERE username = '$myusername' and pass = '$pass'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];

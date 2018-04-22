@@ -119,6 +119,9 @@ include("session.php");
                             <li class="has_sub">
 								<a  href="dashboard_3.php" class="waves-effect"><i class="ti-bar-chart"></i><span>Analytics</span></a>
                             </li>
+                            <li class="has_sub">
+								<a  href="settings.php" class="waves-effect"><i class="ti-menu-alt"></i><span>Settings</span></a>
+                            </li>
                             
                         </ul>
                         <div class="clearfix"></div>
@@ -172,7 +175,7 @@ include("session.php");
                                                     <th data-priority="1">Date</th>
                                                     <th data-priority="3">Time</th>
                                                     <th data-priority="1">Light(Lux)</th>
-                                                    <th data-priority="3">Soil Moisture(%)</th>
+                                                   
                                                     <th data-priority="3">CO<sub>2</sub>(ppm)</th>
                                                     <th data-priority="6">Temperature(°C)</th>
                                                     <th data-priority="6">Humidity(%)</th>                                                    
@@ -180,7 +183,7 @@ include("session.php");
                                                 </thead>
 												<div id="sql" style="display: none;">
 												<?php
-                                                    $sql = "SELECT sensorinfo.date as date,sensorinfo.time as time,sensorinfo.light as light,sensorinfo.soil as soil,sensorinfo.co2 as co2,sensorinfo.temp as temp,sensorinfo.hum as hum FROM sensorinfo order by sensorinfo.id DESC LIMIT 25";                                                     
+                                                    $sql = "SELECT sensorinfo.date as date,sensorinfo.time as time,sensorinfo.light as light,sensorinfo.co2 as co2,sensorinfo.temp as temp,sensorinfo.hum as hum FROM sensorinfo order by sensorinfo.id DESC LIMIT 10";                                                     
 													  $result = mysqli_query($conn, $sql);
 													  if (mysqli_num_rows($result) > 0) {
 													  // output data of each row
@@ -194,7 +197,7 @@ include("session.php");
                                                     <td><?php echo $row["date"] ?></td>
                                                     <td><?php echo date("h:i:s A", strtotime($row["time"])); ?></td>
                                                     <td><?php echo $row["light"] ?></td>
-                                                    <td><?php echo $row["soil"] ?></td>
+                                             
                                                     <td><?php echo $row["co2"] ?></td>
                                                     <td><?php echo $row["temp"] ?></td>
 													<td><?php echo $row["hum"] ?></td>                                                    
@@ -231,12 +234,12 @@ include("session.php");
                                                 <tr>                                                    
                                                     <th data-priority="1">Date</th>
                                                     <th data-priority="3">Local Time</th>
-													<th data-priority="3">System Time</th>													
+													<th data-priority="3">Status</th>													
                                                 </tr>
                                                 </thead>
 												<div id="sql1" style="display: none;">
 												<?php
-                                                    $sql1 = "SELECT timekeeping.date as tdate,timekeeping.time as ttime,timekeeping.edisontime as etime FROM timekeeping order by timekeeping.id DESC LIMIT 25";                                                     
+                                                    $sql1 = "SELECT timekeeping.date as tdate,timekeeping.time as ttime,timekeeping.status as status FROM timekeeping order by timekeeping.id DESC LIMIT 10";                                                     
 													  $result1 = mysqli_query($conn, $sql1);
 													  if (mysqli_num_rows($result1) > 0) {
 													  // output data of each row
@@ -247,7 +250,7 @@ include("session.php");
                                                 <tr>                                                   
                                                     <td><?php echo $row1["tdate"] ?></td>
                                                     <td><?php echo date("h:i:s A", strtotime($row1["ttime"])); ?></td>
-													<td><?php echo date("h:i:s A", strtotime($row1["etime"])); ?></td>
+													<td><?php echo $row1["status"]; ?></td>
                                                 </tr>										        
                                                 </tbody>
 												<div id="sql1end" style="display: none;">

@@ -7,8 +7,8 @@ var server = net.createServer();
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '',
-  database : 'mushroomdb'
+  password : '123456',
+  database : 'mushdb'
 }); // Database Connection
 
 connection.connect(function(err){

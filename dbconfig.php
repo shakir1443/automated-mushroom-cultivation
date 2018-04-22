@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
-$dbname = "mushroomdb";
+$password = "123456";
+$dbname = "mushdb";
 
 // Create Connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
